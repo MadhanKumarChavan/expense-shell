@@ -4,7 +4,7 @@
 #know about userid to validate root acces required or not
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPT_NAME=$( echo $0 | cut -d"."-f1 )
+SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOGFILE=/tmp/$USERID-$TIMESTAMP-$SCRIPT_NAME.log
 
 #colours declaration
@@ -19,7 +19,7 @@ then
  echo -e "$2.....$R script failure $N"
  exit 1
 else
-echo -e "$2......script passed $N"
+echo -e "$2.....$G script passed $N"
 fi
 }
 
@@ -27,7 +27,7 @@ fi
 
 if [ $USERID -ne 0 ]
 then
-  echo -e $R"run with root acces"$N 
+  echo -e "$R run with root acces"$N 
   exit 1
 else
   echo -e "$Y running with root acces$N"
