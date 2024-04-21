@@ -14,7 +14,7 @@ Y="e\[33m"
 
 #function to keep code dry decalaring variables
 VALIDATE () {
-if [ $1 -ne 0]
+if [ $1 -ne 0 ]
 then
  echo -e "$2.....$R script failure $N"
  exit 1
