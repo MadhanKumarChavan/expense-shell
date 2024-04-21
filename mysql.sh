@@ -30,7 +30,7 @@ then
   echo -e $R"run with root acces"$N 
   exit 1
 else
-  echo -e $Y"running with root acces"$N
+  echo -e "$Y running with root acces$N"
 fi
 
 dnf install mysql-server -y &>>$LOGFILE
