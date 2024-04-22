@@ -66,7 +66,7 @@ VALIDATE $? "backend content extracted"
 npm install &>>$LOGFILE
 VALIDATE $? "installed dependencies"
 
-cp /home/ec2-user/expense-shell/backend.cervicefile  /etc/systemd/system/backend.service &>>$LOGFILE
+cp /home/ec2-user/expense-shell/backend.servicefile  /etc/systemd/system/backend.service &>>$LOGFILE
 VALIDATE $? "backend service file copied"
 
 systemctl daemon-reload &>>$LOGFILE
