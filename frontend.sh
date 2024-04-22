@@ -1,5 +1,4 @@
-#declare shebang
-#!/bin/bash
+#!/bin/bash.
 
 #know about userid to validate root acces required or not
 USERID=$(id -u)
