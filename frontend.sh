@@ -12,9 +12,6 @@ R="e\[31m"
 G="e\[32m"
 Y="e\[33m"
 
-#password should not hard code
-echo "please enter DB password:"
-read  mysql_root_password
 
 #function to keep code dry decalaring variables
 VALIDATE () {
@@ -37,18 +34,27 @@ else
   echo -e "$Y running with root acces$N"
 fi
 
-dnf install mysql-server -y &>>$LOGFILE
-  VALIDATE $? "insatlling mysql"
+dnf install nginx -y &>>$LOGFILE
+  VALIDATE $? "insatlling nginx"
 
-systemctl enable mysqld &>>$LOGFILE
- VALIDATE $? "enable mysql"
+systemctl enable nginx &>>$LOGFILE
+  VALIDATE $? "enable nginx"
 
- systemctl start mysqld &>>$LOGFILE
-  VALIDATE $? "start mysql"
+systemctl start nginx &>>$LOGFILE
+  VALIDATE $? "started nginx"
 
-# mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-#  VALIDATE $? "secure mysql"
-# re run is not possible as shell is not idompotent need to validate
+rm -rf /usr/share/nginx/html/* &>>$LOGFILE
+  VALIDATE $? "old content nginx"
 
-mysql -h 172.31.29.94 -uroot -p${mysql_root_password} < /app/schema/backend.sql  &>>$LOGFILE
-VALIDATE $? "password passed"
+cd /usr/share/nginx/html
+unzip /tmp/frontend.zip
+
+
+
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf  &>>$LOGFILE
+VALIDATE $? "configuration  file copied"
+
+
+
+systemctl restart nginx &>>$LOGFILE
+  VALIDATE $? "started nginx"
