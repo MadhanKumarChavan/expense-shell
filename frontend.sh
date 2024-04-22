@@ -46,6 +46,9 @@ systemctl start nginx &>>$LOGFILE
 rm -rf /usr/share/nginx/html/* &>>$LOGFILE
   VALIDATE $? "old content nginx"
 
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip  &>>$LOGFILE
+  VALIDATE $? "new content nginx"
+
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
