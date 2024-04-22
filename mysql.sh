@@ -50,5 +50,5 @@ systemctl enable mysqld &>>$LOGFILE
 #  VALIDATE $? "secure mysql"
 # re run is not possible as shell is not idompotent need to validate
 
-mysql -h 172.31.29.94 -uroot -p${mysql_root_password} < /app/schema/backend.sql  &>>$LOGFILE
+mysql -h 172.31.29.94 -uroot -p${mysql_root_password} &>>$LOGFILE
 VALIDATE $? "password passed"

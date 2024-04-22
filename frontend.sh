@@ -28,7 +28,7 @@ fi
 
 if [ $USERID -ne 0 ]
 then
-  echo -e "$R run with root acces"$N 
+  echo -e "$R run with root acces$N"
   exit 1
 else
   echo -e "$Y running with root acces$N"
